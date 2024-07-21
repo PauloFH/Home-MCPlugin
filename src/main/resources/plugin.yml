@@ -4,3 +4,17 @@ main: enxada.TesteRecrutamento.Home
 api-version: '1.21'
 authors: [ PauloHolanda ]
 description: Um plugin de home com Cooldown configurável, com Configuração para exibir partículas ao teletransportar e Todas as warps são salvas em um banco de dados MySQL
+commands:
+  home:
+    description: Teleport to your home
+    usage: /home <home_name>
+  sethome:
+    description: Set your home location
+    usage: /sethome <home_name>
+  homes:
+    description: List all your homes
+    usage: /homes or /homes delete <home_name>
+  homeconfig:
+    description: Altera as configurações do plugin
+    usage: /homeconfig <cooldown|particles> <valor>
+    permission: homeconfig.use
