@@ -5,11 +5,6 @@ import org.bukkit.entity.Player;
 import java.sql.*;
 import java.util.Objects;
 
-/**
- * @author PauloHolanda
- * ConnectDB
- * Classe que gerencia a conexão com o banco de dados
- */
 
 public class ConnectDB {
     private final Home plugin;

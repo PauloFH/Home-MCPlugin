@@ -10,12 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-/**
- * @author PauloHolanda
- * Home
- * Classe principal do plugin
- */
-
 public final class Home extends JavaPlugin {
     private ConnectDB connectDB;
     private int cooldown;
