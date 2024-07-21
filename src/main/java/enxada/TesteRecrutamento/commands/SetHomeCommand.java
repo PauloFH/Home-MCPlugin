@@ -1,9 +1,6 @@
 package enxada.TesteRecrutamento.commands;
-/**
- * @author: PauloHolanda
- * SetHomeCommand
- * Classe que gerencia o comando /sethome
- */
+
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,7 +8,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import enxada.TesteRecrutamento.Home;
 
-
+/**
+ * @author PauloHolanda
+ * SetHomeCommand
+ * Classe que gerencia o comando /sethome
+ */
 public class SetHomeCommand implements CommandExecutor {
     private final Home plugin;
 
