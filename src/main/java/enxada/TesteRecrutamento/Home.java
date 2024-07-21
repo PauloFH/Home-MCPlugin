@@ -6,12 +6,12 @@ public final class Home extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        getLogger().info("\\u001B[32m"+this.toString() + ":: Plugin habilitado!");
 
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        getLogger().info("\\u001B[32m"+this.toString()+ ":: plugin foi desabilitado com sucesso!!");
     }
 }
