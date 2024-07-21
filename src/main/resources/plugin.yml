@@ -13,8 +13,11 @@ commands:
     usage: /sethome <home_name>
   homes:
     description: List all your homes
-    usage: /homes or /homes delete <home_name>
+    usage: /homes
+  delhome:
+    description: Delete your home
+    usage: /delhome <home_name>
   homeconfig:
     description: Altera as configurações do plugin
-    usage: /homeconfig <cooldown|particles> <valor>
+    usage: /homeconfig <cooldown|particles|particles-count> <valor>
     permission: homeconfig.use

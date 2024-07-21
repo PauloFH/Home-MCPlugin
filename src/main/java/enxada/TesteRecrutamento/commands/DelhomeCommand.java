@@ -17,8 +17,7 @@ public class DelhomeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        //verifica se o sender é um player
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player )) {
             sender.sendMessage("Este comando só pode ser usado por jogadores.");
             return true;
         }
@@ -26,9 +25,11 @@ public class DelhomeCommand implements CommandExecutor {
             sender.sendMessage("Uso correto: /delhome <nome_da_home>");
             return true;
         }
-        String homeName = args[0];
+        plugin.controllimit(player);
         //deleta a home
-        deleteHome((Player) sender, homeName);
+        String homeName = args[0];
+
+        deleteHome(player, homeName);
         return true;
     }
 

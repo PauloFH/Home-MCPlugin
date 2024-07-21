@@ -2,13 +2,10 @@ package enxada.TesteRecrutamento.commands;
 
 import enxada.TesteRecrutamento.Home;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.Objects;
 
 public class HomesCommmand  implements CommandExecutor {
     private final Home plugin;
@@ -23,13 +20,18 @@ public class HomesCommmand  implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Este comando só pode ser usado por jogadores.");
             return true;
         }
+
+        //lista todas as homes do jogador
         if (args.length == 0) {
             listHomes(player);
+            player.sendMessage(ChatColor.GOLD + "O limite de homes é " + ChatColor.AQUA + plugin.getConfig().getInt("max-homes"));
         }
+
         else {
             player.sendMessage(ChatColor.RED + "Uso correto: /homes");
 
         }
+        plugin.controllimit(player);
         return true;
     }
     public void listHomes(Player player) {

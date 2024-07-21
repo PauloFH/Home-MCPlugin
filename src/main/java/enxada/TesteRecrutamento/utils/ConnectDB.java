@@ -142,4 +142,29 @@ public class ConnectDB {
             plugin.getLogger().severe("Erro ao deletar a home :: "+e.getMessage());
         }
     }
+    public int coutHomes(Player player) {
+        String sql = "SELECT COUNT(*) FROM homes WHERE player_uuid = ?";
+        try (PreparedStatement prepared_statement = connection.prepareStatement(sql)) {
+            prepared_statement.setString(1, player.getUniqueId().toString());
+            ResultSet rs = prepared_statement.executeQuery();
+            int count = 0;
+            if (rs.next()) {
+                 count = rs.getInt(1);
+            }
+            return count;
+        } catch (SQLException e) {
+            plugin.getLogger().severe("Erro ao contar as homes :: "+e.getMessage());
+        }     return 0;
+    }
+
+    public void deleteOldHomes(Player player, int i) {
+        String sql = "DELETE FROM homes WHERE player_uuid = ? ORDER BY id LIMIT ?";
+        try (PreparedStatement prepared_statement = connection.prepareStatement(sql)) {
+            prepared_statement.setString(1, player.getUniqueId().toString());
+            prepared_statement.setInt(2, i);
+            prepared_statement.executeUpdate();
+        } catch (SQLException e) {
+            plugin.getLogger().severe("Erro ao deletar as homes antigas :: "+e.getMessage());
+        }
+    }
 }

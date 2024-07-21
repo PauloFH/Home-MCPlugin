@@ -30,10 +30,16 @@ public class SetHomeCommand implements CommandExecutor {
             player.sendMessage("Uso correto: /sethome <nome_da_home>");
             return true;
         }
-        String homeName = args[0];
-        plugin.getDatabaseManager().setHome(player, homeName, player.getLocation());
-        player.sendMessage("Home '" + homeName + "' definida com sucesso!");
-
-        return true;
+        if (plugin.getDatabaseManager().coutHomes(player) >= plugin.getConfig().getInt("max-homes")) {
+            if (plugin.getDatabaseManager().getHome(player, args[0]) == null) {
+                player.sendMessage(ChatColor.RED + "Você já atingiu o limite de homes.");
+                return true;
+            }
+        }
+            String homeName = args[0];
+            plugin.getDatabaseManager().setHome(player, homeName, player.getLocation());
+            player.sendMessage("Home '" + homeName + "' definida com sucesso!");
+        plugin.controllimit(player);
+            return true;
     }
 }
