@@ -26,18 +26,19 @@ public class HomeCommand implements CommandExecutor {
             sender.sendMessage("Este comando só pode ser usado por jogadores.");
             return true;
         }
+             //se o player já utrapassou o limite de homes por mudança de configuração geral e não é admin
+            plugin.controllimit(player);
 
-        plugin.controllimit(player);
-        if (args.length < 1) {
+        if (args.length != 1) {
              player.sendMessage("Uso correto: /home <nome_da_home>");
             return true;
         }
-        //Verifica se o player está de cooldown
+        //Verifica se o player está de cooldown se não for admin
         UUID playerUUID = player.getUniqueId();
         if (cooldowns.containsKey(playerUUID)) {
             long lastUsed = cooldowns.get(playerUUID);
             int cooldown = plugin.getCooldown();
-            if ((System.currentTimeMillis() - lastUsed) / 1000 < cooldown) {
+            if (((System.currentTimeMillis() - lastUsed) / 1000 < cooldown) && (!player.hasPermission("homeconfig.use"))) {
                 player.sendMessage(ChatColor.RED+ "Você deve esperar " + ChatColor.AQUA + cooldown +" segundos "+ ChatColor.RED+"entre usos do comando.");
                 return true;
             }

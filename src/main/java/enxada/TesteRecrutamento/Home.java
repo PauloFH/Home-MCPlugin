@@ -60,13 +60,13 @@ public final class Home extends JavaPlugin {
     public  void controllimit(Player player){
         int homes = this.getDatabaseManager().coutHomes(player);
         int limit = this.getConfig().getInt("max-homes");
-        if( homes> limit ){
+        if( homes> limit && !player.hasPermission("homeconfig.use")){
             player.sendMessage(ChatColor.RED+"Você utrapassou o limite de homes e serão limpos as " +(homes - limit) +" mais antigas.");
             this.getDatabaseManager().deleteOldHomes(player, homes - limit);
         }
     }
     public int getCooldown() {
-        return cooldown;
+        return getConfig().getInt("cooldown", 10);
     }
     public ConnectDB getDatabaseManager() {
         return connectDB;

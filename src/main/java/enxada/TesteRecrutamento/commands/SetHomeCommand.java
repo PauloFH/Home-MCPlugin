@@ -21,20 +21,21 @@ public class SetHomeCommand implements CommandExecutor {
             sender.sendMessage("Este comando só pode ser usado por jogadores.");
             return true;
         }
-        if (args.length < 1) {
+        if (args.length != 1) {
             player.sendMessage("Uso correto: /sethome <nome_da_home>");
             return true;
         }
-        if (plugin.getDatabaseManager().coutHomes(player) >= plugin.getConfig().getInt("max-homes")) {
+        //se o player já atingiu o limite de homes e a nova home não é uma alteração de uma existente e não é admin
+        if (plugin.getDatabaseManager().coutHomes(player) == plugin.getConfig().getInt("max-homes")&& !sender.hasPermission("homeconfig.use")) {
             if (plugin.getDatabaseManager().getHome(player, args[0]) == null) {
                 player.sendMessage(ChatColor.RED + "Você já atingiu o limite de homes.");
                 return true;
             }
         }
+        plugin.controllimit(player);
             String homeName = args[0];
             plugin.getDatabaseManager().setHome(player, homeName, player.getLocation());
             player.sendMessage("Home '" + homeName + "' definida com sucesso!");
-        plugin.controllimit(player);
             return true;
     }
 }

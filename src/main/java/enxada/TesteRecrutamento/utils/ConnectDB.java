@@ -118,7 +118,7 @@ public class ConnectDB {
             ResultSet rs = prepared_statement.executeQuery();
             StringBuilder homes = new StringBuilder();
             while (rs.next()) {
-                homes.append(rs.getString("home_name")).append("\n ");
+                homes.append(rs.getString("home_name")).append("  :  ");
             }
             return homes.toString();
         } catch (SQLException e) {

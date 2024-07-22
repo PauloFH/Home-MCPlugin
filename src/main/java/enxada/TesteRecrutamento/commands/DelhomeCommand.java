@@ -21,7 +21,7 @@ public class DelhomeCommand implements CommandExecutor {
             sender.sendMessage("Este comando só pode ser usado por jogadores.");
             return true;
         }
-        if (args.length < 1) {
+        if (args.length != 1) {
             sender.sendMessage("Uso correto: /delhome <nome_da_home>");
             return true;
         }

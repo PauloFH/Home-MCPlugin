@@ -20,7 +20,7 @@ public class HomeConfigCommand implements CommandExecutor {
             sender.sendMessage("Você não tem permissão para usar este comando.");
             return true;
         }
-        if (args.length < 2) {
+        if (args.length != 2) {
             sender.sendMessage("Uso correto: /homeconfig <cooldown|particles> <valor>");
             return true;
         }
@@ -32,6 +32,11 @@ public class HomeConfigCommand implements CommandExecutor {
             case "cooldown":
                 try {
                     int cooldown = Integer.parseInt(value);
+                    if (cooldown < 1) {
+                        sender.sendMessage(ChatColor.RED + "Valor de cooldown inválido. Deve ser maior que 0.");
+                        return true;
+                    }
+                    plugin.getLogger().info("Solicitação de aumento de cooldown para: " + cooldown);
                     plugin.getConfig().set("cooldown", cooldown);
                     plugin.saveConfig();
                     plugin.reloadConfig();
@@ -50,6 +55,10 @@ public class HomeConfigCommand implements CommandExecutor {
             case "particles-count":
                 try {
                     int particlesCount = Integer.parseInt(value);
+                if(particlesCount < 1 || particlesCount > 1000) {
+                    sender.sendMessage(ChatColor.RED + "Valor de quantidade de partículas inválido. Deve ser entre 1 e 1000.");
+                    return true;
+                }
                     plugin.getConfig().set("particles-count", particlesCount);
                     plugin.saveConfig();
                     plugin.reloadConfig();

@@ -22,6 +22,7 @@ public class HomesCommmand  implements CommandExecutor {
         }
 
         //lista todas as homes do jogador
+        plugin.controllimit(player);
         if (args.length == 0) {
             listHomes(player);
             player.sendMessage(ChatColor.GOLD + "O limite de homes é " + ChatColor.AQUA + plugin.getConfig().getInt("max-homes"));
@@ -31,7 +32,6 @@ public class HomesCommmand  implements CommandExecutor {
             player.sendMessage(ChatColor.RED + "Uso correto: /homes");
 
         }
-        plugin.controllimit(player);
         return true;
     }
     public void listHomes(Player player) {
@@ -40,7 +40,7 @@ public class HomesCommmand  implements CommandExecutor {
             player.sendMessage(ChatColor.RED + "Você não tem nenhuma home definida.");
         }
         else {
-            player.sendMessage(ChatColor.GOLD + player.getDisplayName()+" homes : " + homes);
+            player.sendMessage(ChatColor.BLUE + player.getDisplayName()+" homes : \n"+ ChatColor.GOLD  + homes);
         }
 
     }
