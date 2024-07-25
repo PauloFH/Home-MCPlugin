@@ -21,6 +21,7 @@ public final class Home extends JavaPlugin {
 
         // Initialize o banco de dados
         this.connectDB = new ConnectDB(this);
+
         connectDB.initialize();
         // Inicializa os comandos
         InitializeCommands();

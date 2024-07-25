@@ -15,11 +15,11 @@ public class ConnectDB {
     //constructor e definição do servidor local
     public ConnectDB(Home plugin) {
         this.plugin = plugin;
-        this.host = System.getenv("DB_HOST");
-        this.port = Integer.parseInt(System.getenv("DB_PORT"));
-        this.database = System.getenv("DB_NAME");
-        this.username = System.getenv("DB_USER");
-        this.password = System.getenv("DB_PASSWORD");
+        this.host = "db";
+        this.port = 3306;
+        this.database = "homes";
+        this.username = "root";
+        this.password = "root";
 
     }
 
@@ -28,7 +28,7 @@ public class ConnectDB {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             createDatabase();
-            connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:" + port + "/" + database, username, password);
             createTable();
         } catch (ClassNotFoundException | SQLException e) {
            plugin.getLogger().severe("Erro ao conectar ao banco de dados :: "+e.getMessage());
