@@ -15,11 +15,12 @@ public class ConnectDB {
     //constructor e definição do servidor local
     public ConnectDB(Home plugin) {
         this.plugin = plugin;
-        this.host = "localhost";
-        this.port = 3306;
-        this.database = "minecrafthome";
-        this.username = "root";
-        this.password = "root";
+        this.host = System.getenv("DB_HOST");
+        this.port = Integer.parseInt(System.getenv("DB_PORT"));
+        this.database = System.getenv("DB_NAME");
+        this.username = System.getenv("DB_USER");
+        this.password = System.getenv("DB_PASSWORD");
+
     }
 
     //inicialização da conexão com o banco de dados
