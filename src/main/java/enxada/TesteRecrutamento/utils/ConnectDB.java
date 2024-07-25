@@ -28,7 +28,7 @@ public class ConnectDB {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             createDatabase();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:" + port + "/" + database, username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://"+host+":" + port + "/" + database, username, password);
             createTable();
         } catch (ClassNotFoundException | SQLException e) {
            plugin.getLogger().severe("Erro ao conectar ao banco de dados :: "+e.getMessage());
