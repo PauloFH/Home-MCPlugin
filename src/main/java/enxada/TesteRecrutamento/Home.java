@@ -2,7 +2,6 @@ package enxada.TesteRecrutamento;
 
 import enxada.TesteRecrutamento.commands.*;
 import enxada.TesteRecrutamento.utils.ConnectDB;
-import enxada.TesteRecrutamento.utils.HomeConfigTabCompleter;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -42,7 +41,7 @@ public final class Home extends JavaPlugin {
         Objects.requireNonNull(getCommand("homes")).setExecutor(new HomesCommmand(this));
         Objects.requireNonNull(getCommand("delhome")).setExecutor(new DelhomeCommand(this));
         Objects.requireNonNull(getCommand("homeconfig")).setExecutor(new HomeConfigCommand(this));
-        Objects.requireNonNull(getCommand("homeconfig")).setTabCompleter( new HomeConfigTabCompleter());
+        Objects.requireNonNull(getCommand("homeconfig")).setTabCompleter( new HomeConfigCommand(this));
     }
     public void configurations() {
         saveDefaultConfig();
