@@ -15,13 +15,13 @@ public class ConnectDB {
     //constructor e definição do servidor local
     public ConnectDB(Home plugin) {
         this.plugin = plugin;
-        this.host = "db";
-        this.port = 3306;
-        this.database = "homes";
-        this.username = "root";
-        this.password = "root";
-
+        this.host = plugin.getConfig().getString("database.host");
+        this.port = plugin.getConfig().getInt("database.port");
+        this.database = plugin.getConfig().getString("database.name");
+        this.username = plugin.getConfig().getString("database.username");
+        this.password = plugin.getConfig().getString("database.password");
     }
+
 
     //inicialização da conexão com o banco de dados
     public void initialize() {
